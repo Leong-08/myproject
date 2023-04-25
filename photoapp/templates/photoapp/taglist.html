@@ -1,0 +1,24 @@
+<!-- photoapp/templates/photoapp/taglist.html -->
+{% extends 'photoapp/list.html' %}
+
+{% block body %}
+
+<div class="alert alert-primary">
+    <h2 class="text-center">Photos with the tag {{tag}}</h2>
+</div>
+
+{{ block.super }}
+<h1>BLOCK SUPER</h1>
+<div class="row">
+    {% for photo in photos %}
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="{% url 'photoapp:detail' photo.id %}" class="d-block mb-4 h-100">
+        <img src="{{photo.image.url}}" class="img-fluid rounded" alt="{{photo.title}}" />
+      </a>
+    </div>
+    {% endfor %}
+
+<h1>END BLOCK SUPER</h1>
+</div>
+
+{% endblock body %}
